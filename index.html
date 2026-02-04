@@ -84,7 +84,7 @@
 <body>
   <div class="card">
     <!-- Always visible -->
-    <h1>Hey baby 💕</h1>
+    <h1 id="title">Hey Tolu my love 💕</h1>
 
     <div id="intro">
     <p>I've got a cheeky question to ask...</p>
@@ -112,6 +112,7 @@
   </div>
   
   <script>
+    const title = document.getElementByID('title');
     const okayBtn = document.getElementById('okayBtn');
     const noThanksBtn = document.getElementById('noThanksBtn');
     const intro = document.getElementById('intro');
@@ -140,6 +141,7 @@
     // Final YES
     yesBtn.addEventListener('click', () => {
       valentine.classList.add('hidden');
+      title.classList.add('hidden');
       result.classList.remove('hidden');
     });
 
