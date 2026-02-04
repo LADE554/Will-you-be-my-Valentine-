@@ -83,21 +83,34 @@
 </head>
 <body>
   <div class="card">
-    <h1>Hey love 💕</h1>
-    <p>Will you be my Valentine?</p>
+    <!-- Always visible -->
+    <h1>Hey baby 💕</h1>
+
+    <div id="intro">
+    <p>I've got a cheeky question to ask...</p>
 
     <div class="buttons">
-      <button class="yes" id="yesBtn">Yes 💘</button>
-      <button class="no" id="noBtn">No 🙃</button>
+      <button class="yes" id="okayBtn">Okay...</button>
+      <button class="no" id="noThanksBtn">No thanks</button>
     </div>
+  </div>
+    
+  <div id="valentine" class="hidden">
+      <p><strong>Will you be my Valentine?🙈</strong></p>
 
+      <div class="buttons">
+        <button class="yes" id="yesBtn">Yes 💘</button>
+        <button class="no" id="noBtn">Not a chance🙃</button>
+      </div>
+    </div>
+    
     <div id="result" class="hidden">
       <h1>YAY!!! 🥰</h1>
-      <p>I knew you’d say yes. Can’t wait to celebrate with you ❤️</p>
+      <p>You cheeky monkey😘Can’t wait to celebrate with you my love❤️</p>
       <div class="hearts">💖 💕 💗 💓</div>
     </div>
   </div>
-
+  
   <script>
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
