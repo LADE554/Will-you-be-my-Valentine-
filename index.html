@@ -118,6 +118,10 @@
     </div>
   </div>
   
+  <!-- Audio moved above script so it's available when JS runs.
+       'controls' is included to help debug loading; remove controls later if you don't want them visible. -->
+  <audio id="music" src="music.mp3" loop controls></audio>
+
   <script>
 const okayBtn = document.getElementById('okayBtn');
 const noThanksBtn = document.getElementById('noThanksBtn');
@@ -129,6 +133,19 @@ const result = document.getElementById('result');
 const title = document.getElementById('title');
 const music = document.getElementById('music');
 
+// Safe play helper: checks element exists and handles play() promise rejection
+function safePlay(setVolume = false) {
+  if (!music) {
+    console.warn('Audio element not found (music).');
+    return;
+  }
+  if (setVolume) music.volume = 1.0;
+  // play() returns a promise in modern browsers; catch errors (autoplay policy, etc.)
+  music.play().catch((err) => {
+    console.warn('Playback prevented or failed:', err);
+  });
+}
+
 // Hover effect: playful betrayal
 noThanksBtn.addEventListener('mouseover', () => {
   noThanksBtn.textContent = 'Yes of course 💖';
@@ -138,14 +155,13 @@ noThanksBtn.addEventListener('mouseover', () => {
 okayBtn.addEventListener('click', () => {
   intro.classList.add('hidden');
   valentine.classList.remove('hidden');
-  music.volume = 1.0;
-  music.play();
+  safePlay(true);
 });
 
 noThanksBtn.addEventListener('click', () => {
   intro.classList.add('hidden');
   valentine.classList.remove('hidden');
-  music.play();
+  safePlay();
 });
 
 // Final YES: show result, hide title, play music
@@ -153,7 +169,7 @@ yesBtn.addEventListener('click', () => {
   valentine.classList.add('hidden');
   title.classList.add('hidden');
   result.classList.remove('hidden');
-  music.play();
+  safePlay();
 });
 
 // Dodge NO button
@@ -163,6 +179,5 @@ noBtn.addEventListener('mouseover', () => {
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 });
 </script>
-  <audio id="music" src="music.mp3" loop></audio>
 </body>
 </html>
