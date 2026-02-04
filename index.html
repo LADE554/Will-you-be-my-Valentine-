@@ -115,7 +115,7 @@
     <div id="result" class="hidden">
       <h1>YAY!!! 🥰</h1>
       <p>You cheeky monkey😘Can’t wait to celebrate with you my love❤️</p>
-      <img src="T&E.jpg" alt-"T&E" class="photo">
+      <img src="T&E.jpg" alt="T&E" class="photo">
       <div class="hearts">💖 💕 💗 💓</div>
     </div>
   </div>
@@ -140,11 +140,13 @@ noThanksBtn.addEventListener('mouseover', () => {
 okayBtn.addEventListener('click', () => {
   intro.classList.add('hidden');
   valentine.classList.remove('hidden');
+  music.play();
 });
 
 noThanksBtn.addEventListener('click', () => {
   intro.classList.add('hidden');
   valentine.classList.remove('hidden');
+  music.play();
 });
 
 // Final YES: show result, hide title, play music
@@ -162,6 +164,6 @@ noBtn.addEventListener('mouseover', () => {
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 });
 </script>
-  <audio id="music" src="music.mp3"></audio>
+  <audio id="music" src="music.mp3" loop></audio>
 </body>
 </html>
