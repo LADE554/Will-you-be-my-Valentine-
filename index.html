@@ -121,46 +121,47 @@
   </div>
   
   <script>
-    const title = document.getElementByID('title');
-    const okayBtn = document.getElementById('okayBtn');
-    const noThanksBtn = document.getElementById('noThanksBtn');
-    const intro = document.getElementById('intro');
-    const valentine = document.getElementById('valentine');
+const okayBtn = document.getElementById('okayBtn');
+const noThanksBtn = document.getElementById('noThanksBtn');
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const intro = document.getElementById('intro');
+const valentine = document.getElementById('valentine');
+const result = document.getElementById('result');
+const title = document.getElementById('title');
+const music = document.getElementById('music');
 
-    const yesBtn = document.getElementById('yesBtn');
-    const noBtn = document.getElementById('noBtn');
-    const result = document.getElementById('result');
+// Hover effect: playful betrayal
+noThanksBtn.addEventListener('mouseover', () => {
+  noThanksBtn.textContent = 'Yes of course 💖';
+});
 
-    // Hover betrayal 😌
-    noThanksBtn.addEventListener('mouseover', () => {
-      noThanksBtn.textContent = 'Yes of course 💖';
-    });
+// Click intro buttons to show Valentine question
+okayBtn.addEventListener('click', () => {
+  intro.classList.add('hidden');
+  valentine.classList.remove('hidden');
+});
 
-    // Move to Valentine question
-    okayBtn.addEventListener('click', () => {
-      intro.classList.add('hidden');
-      valentine.classList.remove('hidden');
-    });
+noThanksBtn.addEventListener('click', () => {
+  intro.classList.add('hidden');
+  valentine.classList.remove('hidden');
+});
 
-    noThanksBtn.addEventListener('click', () => {
-      intro.classList.add('hidden');
-      valentine.classList.remove('hidden');
-    });
+// Final YES: show result, hide title, play music
+yesBtn.addEventListener('click', () => {
+  valentine.classList.add('hidden');
+  title.classList.add('hidden');
+  result.classList.remove('hidden');
+  music.play();
+});
 
-    // Final YES
-    yesBtn.addEventListener('click', () => {
-      valentine.classList.add('hidden');
-      title.classList.add('hidden');
-      result.classList.remove('hidden');
-    });
-
-    // Dodge NO
-    noBtn.addEventListener('mouseover', () => {
-      const x = Math.random() * 200 - 100;
-      const y = Math.random() * 200 - 100;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
-  </script>
+// Dodge NO button
+noBtn.addEventListener('mouseover', () => {
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 200 - 100;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+</script>
   <audio id="music" src="music.mp3"></audio>
 </body>
 </html>
