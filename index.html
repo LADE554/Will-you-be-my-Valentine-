@@ -112,16 +112,38 @@
   </div>
   
   <script>
+    const okayBtn = document.getElementById('okayBtn');
+    const noThanksBtn = document.getElementById('noThanksBtn');
+    const intro = document.getElementById('intro');
+    const valentine = document.getElementById('valentine');
+
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
     const result = document.getElementById('result');
-    const buttons = document.querySelector('.buttons');
 
+    // Hover betrayal 😌
+    noThanksBtn.addEventListener('mouseover', () => {
+      noThanksBtn.textContent = 'Yes of course 💖';
+    });
+
+    // Move to Valentine question
+    okayBtn.addEventListener('click', () => {
+      intro.classList.add('hidden');
+      valentine.classList.remove('hidden');
+    });
+
+    noThanksBtn.addEventListener('click', () => {
+      intro.classList.add('hidden');
+      valentine.classList.remove('hidden');
+    });
+
+    // Final YES
     yesBtn.addEventListener('click', () => {
-      buttons.classList.add('hidden');
+      valentine.classList.add('hidden');
       result.classList.remove('hidden');
     });
 
+    // Dodge NO
     noBtn.addEventListener('mouseover', () => {
       const x = Math.random() * 200 - 100;
       const y = Math.random() * 200 - 100;
